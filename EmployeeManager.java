@@ -44,11 +44,13 @@ public class EmployeeManager {
         } else if (args[0].contains("?")) {
             System.out.println("Loading data ...");
             try {
-                for (String employee : readEmployeesFromFile()) {
-                    if (employee.equals(args[0].substring(1))) {
-                        System.out.println("Employee found!");
-                        break;
-                    }
+                String[] employees = readEmployeesFromFile();
+                String searchEmployee = args[0].substring(1);
+                boolean found = Arrays.asList(employees).contains(searchEmployee);
+                if (found) {
+                    System.out.println("Employee found!");
+                } else {
+                    System.out.println("Employee not found.");
                 }
             } catch (Exception e) {
 
@@ -92,7 +94,6 @@ public class EmployeeManager {
             System.out.println("Data Deleted.");
         }
     }
-
 }
 
 private static String[] readEmployeesFromFile() throws IOException {
