@@ -106,19 +106,18 @@ public class EmployeeManager {
 
 }
 
-    private static String[] readEmployeesFromFile() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(
-                new InputStreamReader(
-                        new FileInputStream("employees.txt")));
-        String line = bufferedReader.readLine();
-        bufferedReader.close();
-        return line.split(",");
-    }
+private static String[] readEmployeesFromFile() throws IOException {
+    BufferedReader bufferedReader = new BufferedReader(
+            new InputStreamReader(
+                    new FileInputStream(Constants.EMPLOYEES_FILE_PATH)));
+    String line = bufferedReader.readLine();
+    bufferedReader.close();
+    return line.split(",");
+}
 
-    private static void writeEmployeesToFile(String[] employees) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(
-                new FileWriter("employees.txt"));
-        bufferedWriter.write(String.join(",", employees));
-        bufferedWriter.close();
-    }
+private static void writeEmployeesToFile(String[] employees) throws IOException {
+    BufferedWriter bufferedWriter = new BufferedWriter(
+            new FileWriter(Constants.EMPLOYEES_FILE_PATH));
+    bufferedWriter.write(String.join(",", employees));
+    bufferedWriter.close();
 }
