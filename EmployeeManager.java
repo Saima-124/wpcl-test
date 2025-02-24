@@ -6,6 +6,7 @@ import java.util.*;
 public class EmployeeManager {
     public static void main(String[] args) {
         // Check arguments
+
         if (args[0].equals("l")) {
             System.out.println("Loading data ...");
             try {
@@ -18,6 +19,7 @@ public class EmployeeManager {
                     System.out.println(emp);
                 }
             } catch (Exception e) {
+
             }
             System.out.println("Data Loaded.");
         } else if (args[0].equals("s")) {
@@ -33,6 +35,7 @@ public class EmployeeManager {
                 int idx = rand.nextInt(e.length);
                 System.out.println(e[idx]);
             } catch (Exception e) {
+
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("+")) {
@@ -44,6 +47,7 @@ public class EmployeeManager {
                 w.write(", " + n);
                 w.close();
             } catch (Exception e) {
+
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("?")) {
@@ -63,6 +67,7 @@ public class EmployeeManager {
                     }
                 }
             } catch (Exception e) {
+
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("c")) {
@@ -87,6 +92,7 @@ public class EmployeeManager {
                 }
                 System.out.println(count + " word(s) found " + chars.length);
             } catch (Exception e) {
+
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("u")) {
@@ -108,6 +114,7 @@ public class EmployeeManager {
                 w.write(String.join(",", e));
                 w.close();
             } catch (Exception e) {
+
             }
             System.out.println("Data Updated.");
         } else if (args[0].contains("d")) {
@@ -126,6 +133,7 @@ public class EmployeeManager {
                 w.write(String.join(",", list));
                 w.close();
             } catch (Exception e) {
+
             }
             System.out.println("Data Deleted.");
         }
