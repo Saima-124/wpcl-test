@@ -1,5 +1,5 @@
 
-//File Name EmployeeManager.java
+// File Name: EmployeeManager.java
 import java.io.*;
 import java.util.*;
 
@@ -12,13 +12,14 @@ public class EmployeeManager {
         }
 
         if (args[0].equals("l")) {
+            // List all employees
             System.out.println("Loading data ...");
             try {
                 for (String employee : readEmployeesFromFile()) {
                     System.out.println(employee);
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             System.out.println("Data Loaded.");
         } else if (args[0].equals("s")) {
@@ -27,7 +28,7 @@ public class EmployeeManager {
                 String[] employees = readEmployeesFromFile();
                 System.out.println(employees[new Random().nextInt(employees.length)]);
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("+")) {
@@ -38,10 +39,11 @@ public class EmployeeManager {
                 bufferedWriter.write(", " + args[0].substring(1));
                 bufferedWriter.close();
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("?")) {
+            // Show a random employee
             System.out.println("Loading data ...");
             try {
                 String[] employees = readEmployeesFromFile();
@@ -53,7 +55,7 @@ public class EmployeeManager {
                     System.out.println("Employee not found.");
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("c")) {
@@ -65,7 +67,7 @@ public class EmployeeManager {
                     System.out.println(totalWord + " word(s) found");
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             System.out.println("Data Loaded.");
         } else if (args[0].contains("u")) {
@@ -79,23 +81,25 @@ public class EmployeeManager {
                 }
                 writeEmployeesToFile(employees);
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             System.out.println("Data Updated.");
         } else if (args[0].contains("d")) {
+            // Delete an employee
             System.out.println("Loading data ...");
             try {
                 List<String> employeeList = new ArrayList<>(Arrays.asList(readEmployeesFromFile()));
                 employeeList.remove(args[0].substring(1));
                 writeEmployeesToFile(employeeList.toArray(new String[0]));
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
             System.out.println("Data Deleted.");
         }
     }
 }
 
+// Read employees from file
 private static String[] readEmployeesFromFile() throws IOException {
     BufferedReader bufferedReader = new BufferedReader(
             new InputStreamReader(
@@ -105,6 +109,7 @@ private static String[] readEmployeesFromFile() throws IOException {
     return line.split(",");
 }
 
+// Write employees to file
 private static void writeEmployeesToFile(String[] employees) throws IOException {
     BufferedWriter bufferedWriter = new BufferedWriter(
             new FileWriter(Constants.EMPLOYEES_FILE_PATH));
@@ -112,6 +117,7 @@ private static void writeEmployeesToFile(String[] employees) throws IOException 
     bufferedWriter.close();
 }
 
+// Display menu options
 private static void menu() {
     System.out.println("Invalid option. Please use one of the following options:");
     System.out.println("  line - List all employees");
