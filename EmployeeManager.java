@@ -7,7 +7,7 @@ public class EmployeeManager {
     public static void main(String[] args) {
         // Check arguments
         if (args.length != 1) {
-            displayMenu();
+            menu();
             return;
         }
 
@@ -110,4 +110,15 @@ private static void writeEmployeesToFile(String[] employees) throws IOException 
             new FileWriter(Constants.EMPLOYEES_FILE_PATH));
     bufferedWriter.write(String.join(",", employees));
     bufferedWriter.close();
+}
+
+private static void menu() {
+    System.out.println("Invalid option. Please use one of the following options:");
+    System.out.println("  line - List all employees");
+    System.out.println("  s - Show a random employee");
+    System.out.println("  +<name> - Add a new employee");
+    System.out.println("  ?<name> - Search for an employee");
+    System.out.println("  c - Count the number of words in the file");
+    System.out.println("  u<name> - Update an employee's name to 'Updated'");
+    System.out.println("  d<name> - Delete an employee");
 }
